@@ -31,11 +31,13 @@ No npm or pip dependencies are required to *run* the application. Node and Playw
 ## Real AI functionality
 
 - Responds to user-supplied *fictional/redacted* log entries and selected tone.
-- Calls `http://127.0.0.1:11434/api/generate` using Ollama and `gemma3:1b` with structured JSON output.
-- Produces an original story, three log-related clues, and a final line.
+- Calls `http://127.0.0.1:11434/api/generate` using Ollama and `gemma3:1b` with a JSON schema, response validation, and a 110–190 word story check.
+- Produces a 110–190 word fictional story, three clues, and a final line. Malformed or out-of-range output gets one retry, then a clear error.
 - Reports a clear error when the model is unavailable; does **not** fake AI output.
 - Lets you download a Markdown story.
 - Binds local-only web server (`127.0.0.1:8766`), restricts request sizes and external origins, does not store input history.
+
+**Generation time:** the model call can take up to 140 seconds per attempt. One output-validation retry is allowed, so slow machines may take several minutes.
 
 **Privacy caveat:** You control the local Ollama process, but should still avoid pasting secrets or personal logs; GhostLog was designed for fictional or redacted inputs. Logs are not sent to any cloud model by this code. Model artifacts are subject to their respective licenses.
 
@@ -67,9 +69,15 @@ Unit tests mock model outputs. **Unit tests are not evidence of real AI executio
 
 ## Limits
 
-- Unverified real model execution until the GitHub Actions workflow succeeds.
+- Real inference evidence is linked in docs/VERIFICATION.md; passing these examples does not establish a reliability rate across all inputs.
 - Local demo, not a publicly hosted SaaS app.
 - AI may hallucinate, omit clues, or fail schema validation; errors are surfaced rather than substituted with a fake response.
 - No malware diagnosis or shell command execution.
 
 MIT License © 2026 N-CODE STUDIO.
+
+## Source preservation and evidence
+
+The supplied project ZIP was retained unchanged. Every original file path was present in the existing repository at commit 4512b5a; existing GitHub edits were used as the baseline. The archive SHA-256 and the original file hashes are in [docs/original-zip-manifest.json](docs/original-zip-manifest.json).
+
+See [docs/VERIFICATION.md](docs/VERIFICATION.md) for the verified commit, actual inference output, screenshots, video, and limitations. The DEV article remains a draft until explicitly published.

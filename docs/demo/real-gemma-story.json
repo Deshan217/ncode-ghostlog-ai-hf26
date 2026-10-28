@@ -1,0 +1,65 @@
+{
+  "generated_at_utc": "2026-10-28T10:10:15.671578+00:00",
+  "commit": "c0027f889a12e66a58dfbf5b598864d4363cf945",
+  "run_id": "40669822794",
+  "python": "3.12.15",
+  "ollama": {
+    "version": "0.40.12"
+  },
+  "models": {
+    "models": [
+      {
+        "name": "gemma3:1b",
+        "model": "gemma3:1b",
+        "modified_at": "2026-10-28T10:09:58.471702841Z",
+        "size": 806067407,
+        "digest": "97558784bdc9175075a72655bf360b15da17df6b3b9e5182af9f8c0c8e58ba7c",
+        "details": {
+          "parent_model": "dhiltgen/gemma3:1b-it-q4_K_M-llamacpp",
+          "format": "gguf",
+          "family": "gemma3",
+          "families": [
+            "gemma3"
+          ],
+          "parameter_size": "999.89M",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 1152,
+          "runner": "llamacpp"
+        },
+        "capabilities": [
+          "completion"
+        ]
+      }
+    ]
+  },
+  "story_word_count": 149,
+  "input": {
+    "logs": "[00:03:11] archived-session resumed after 13 years\n[00:03:12] user: nobody_here\n[00:03:13] room-temperature sensor: 2.1 C\n[00:03:14] playback.wav duration: 00:00:00\n[00:03:15] notification: you forgot the light",
+    "mood": "unsettling"
+  },
+  "actual_model_output": {
+    "title": "The Still Room",
+    "signal": "A dimly lit study, filled with the scent of old paper and dust. Rain streaks the window, blurring the city lights outside. A single, antique barometer stands in the corner, its needle frozen at 2.1 degrees Celsius. The user, identified as ‘nobody_here,’ is present, seemingly lost in thought. A faint, rhythmic ticking emanates from a grandfather clock in the hallway – a sound that seems to amplify in the stillness.  A small, folded note lies beneath the barometer – a single word: ‘Remember.’  Further examination reveals a discarded photograph of a woman in a Victorian dress, partially obscured by a rain-streaked mirror.  A discarded pencil stub, stained with a dark, almost black, pigment, rests beside it.  The room’s temperature remains stubbornly low, a chilling reminder of something lost.  The air feels heavy, expectant, and a subtle shift in the shadows suggests a presence, not quite visible, yet undeniably present.",
+    "clues": [
+      "The barometer's needle is frozen.",
+      "The photograph depicts a woman in Victorian dress.",
+      "The pencil stain is dark and unnatural."
+    ],
+    "final_line": "It wasn’t a mistake, but a deliberate erasure.",
+    "reality_check": "This fictional story is not a diagnosis of actual computer activity.",
+    "model": "gemma3:1b",
+    "generator": "real-local-open-weight-model",
+    "mood": "unsettling",
+    "inference": {
+      "model": "gemma3:1b",
+      "created_at": "2026-10-28T10:10:15.664469096Z",
+      "done": true,
+      "done_reason": "stop",
+      "response": "{\n  \"title\": \"The Still Room\",\n  \"signal\": \"A dimly lit study, filled with the scent of old paper and dust. Rain streaks the window, blurring the city lights outside. A single, antique barometer stands in the corner, its needle frozen at 2.1 degrees Celsius. The user, identified as ‘nobody_here,’ is present, seemingly lost in thought. A faint, rhythmic ticking emanates from a grandfather clock in the hallway – a sound that seems to amplify in the stillness.  A small, folded note lies beneath the barometer – a single word: ‘Remember.’  Further examination reveals a discarded photograph of a woman in a Victorian dress, partially obscured by a rain-streaked mirror.  A discarded pencil stub, stained with a dark, almost black, pigment, rests beside it.  The room’s temperature remains stubbornly low, a chilling reminder of something lost.  The air feels heavy, expectant, and a subtle shift in the shadows suggests a presence, not quite visible, yet undeniably present.\",\n  \"clues\": [\n    \"The barometer's needle is frozen.\",\n    \"The photograph depicts a woman in Victorian dress.\",\n    \"The pencil stain is dark and unnatural.\"\n  ],\n  \"final_line\": \"It wasn’t a mistake, but a deliberate erasure.\"\n}",
+      "eval_count": 281,
+      "total_duration": 16007939313
+    },
+    "attempts": 1
+  }
+}

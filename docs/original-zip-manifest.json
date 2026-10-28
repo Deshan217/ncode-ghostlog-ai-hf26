@@ -1,0 +1,88 @@
+{
+  "archive": "N-CODE-GhostLog-AI-Hacktoberfest-Week4.zip",
+  "archive_sha256": "276581aada77c4b2cef35e66e5b1687b071fae62aef4bebf9a308cce6080095a",
+  "comparison_base_commit": "4512b5a58c318190c6c7f072111b306f07effcde",
+  "note": "All original file paths are present. Existing GitHub files include changes from the ZIP; they were retained as the baseline. Original archive was not modified. File hashes below describe the original ZIP contents.",
+  "files": [
+    {
+      "path": ".github/workflows/verify.yml",
+      "bytes": 2009,
+      "sha256": "ea779ac6c0963c33666c4f4a79970456f250d1911772e27193a6e0f17b54cf8b"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 40,
+      "sha256": "382e2b3a9175e281e844418ffb2b2e200fd4a3395e4e480e9c46937771fe7cc8"
+    },
+    {
+      "path": "DEMO_CHECKLIST.md",
+      "bytes": 896,
+      "sha256": "95ef06402e1b8bc65da6caecdd20ffdcaf8a5ab8f75c534a59360d752f735fa5"
+    },
+    {
+      "path": "DEV_SUBMISSION_DRAFT.md",
+      "bytes": 4427,
+      "sha256": "d34fa8ceeab4dffbb06ba97fa59ad9ca18a76a9e4b58ed42448ad6051789963c"
+    },
+    {
+      "path": "engine.py",
+      "bytes": 3876,
+      "sha256": "0182b2b85c626321986fce0106abc2f779e26cd6bdfca0c9f90a1352d4248599"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1070,
+      "sha256": "5fb424c6d385599ace08ee467c0bb77c5006adcc55025b9f60b23f066850dc95"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4137,
+      "sha256": "e002f1cc134338fbf13977794bfb16d29e332688ec876e61edb05b867b458269"
+    },
+    {
+      "path": "scripts/capture_demo.mjs",
+      "bytes": 1862,
+      "sha256": "1616643c3123c7667168ce00f863549f69ee8dc4eafae28e06f61fdd3c879225"
+    },
+    {
+      "path": "scripts/verify_real_ai.py",
+      "bytes": 1299,
+      "sha256": "eeac304cd57851c4eb65eedc319adf3eaa310213e4c70d75af682794ce886862"
+    },
+    {
+      "path": "server.py",
+      "bytes": 2816,
+      "sha256": "b8838cb692b4f3d1e785ca0decad2fca74167cab1b3f97073a54a2debafa2cc0"
+    },
+    {
+      "path": "start-windows.bat",
+      "bytes": 32,
+      "sha256": "907d885902ad1d0782a63fb14cdde85695b879867005abed7f3bb28bdd3ddd39"
+    },
+    {
+      "path": "static/app.js",
+      "bytes": 2788,
+      "sha256": "2110da241f80ed9425b089865f420c7e0eccced82f8fcbfe57008bce5802f180"
+    },
+    {
+      "path": "static/index.html",
+      "bytes": 4052,
+      "sha256": "2566867979244ce28a5198a05a41150718c5174f7aaddf4880588068ae13bf05"
+    },
+    {
+      "path": "static/style.css",
+      "bytes": 6690,
+      "sha256": "5934f7d5f802cbe450e1eae665b78aa70e7fe7d17c7806a9e84afce0400bf27e"
+    },
+    {
+      "path": "tests/test_engine.py",
+      "bytes": 2441,
+      "sha256": "65a1c93b9b52756872e723adbdfeceb573896cac64d1d63a0a0dceaadb762c35"
+    },
+    {
+      "path": "tests/test_http.py",
+      "bytes": 1840,
+      "sha256": "9b05c7aed1a9b67f8714bb28995aefa7c93eda65500f32ed70f145f4039b7efd"
+    }
+  ]
+}
