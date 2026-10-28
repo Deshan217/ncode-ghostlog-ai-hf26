@@ -1,0 +1,60 @@
+name: Verify GhostLog and Record Real Gemma Demo
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Input and HTTP tests
+        run: python -m unittest discover -s tests -v
+      - name: Syntax checks
+        run: python -m py_compile engine.py server.py
+  real-gemma:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Ollama
+        run: curl -fsSL https://ollama.com/install.sh | sh
+      - name: Start Ollama and pull Gemma 3 1B
+        run: |
+          OLLAMA_HOST=127.0.0.1:11434 ollama serve >/tmp/ghost-ollama.log 2>&1 &
+          for i in $(seq 1 30); do
+            curl -fsS http://127.0.0.1:11434/api/tags >/dev/null 2>&1 && break
+            sleep 2
+          done
+          ollama pull gemma3:1b
+      - name: Start local GhostLog app
+        run: |
+          python server.py >/tmp/ghost-app.log 2>&1 &
+          for i in $(seq 1 30); do
+            curl -fsS http://127.0.0.1:8766/api/status >/dev/null 2>&1 && break
+            sleep 1
+          done
+      - name: Verify actual model through the application API
+        run: python scripts/verify_real_ai.py
+      - name: Install browser recorder and ffmpeg
+        run: |
+          npm install --no-save --no-package-lock playwright-core@1.56.1
+          npx playwright-core install ffmpeg
+          which google-chrome
+      - name: Record genuine browser demonstration
+        run: node scripts/capture_demo.mjs
+      - name: Upload real AI evidence and video
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ghostlog-real-gemma-demo
+          path: evidence/
+          if-no-files-found: warn
