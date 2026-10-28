@@ -18,13 +18,17 @@ class Tests(unittest.TestCase):
   for p in ("/app.js","/style.css"):
    with urlopen(self.url+p) as r:self.assertEqual(r.status,200)
  def test_unknown(self):
-  with self.assertRaises(HTTPError) as x:urlopen(self.url+"/nothing");self.assertEqual(x.exception.code,404)
+  with self.assertRaises(HTTPError) as x:urlopen(self.url+"/nothing")
+  self.assertEqual(x.exception.code,404)
+  x.exception.close()
  def test_bad_origin(self):
   req=Request(self.url+"/api/haunt",data=b'{"logs":"something strange"}',headers={"Content-Type":"application/json","Origin":"https://example.org"},method="POST")
   with self.assertRaises(HTTPError) as x:urlopen(req)
   self.assertEqual(x.exception.code,403)
+  x.exception.close()
  def test_model_offline(self):
   req=Request(self.url+"/api/haunt",data=json.dumps({"logs":"[00:00] strange message"}).encode(),headers={"Content-Type":"application/json"},method="POST")
   with patch("server.generate_story",side_effect=RuntimeError("offline")):
    with self.assertRaises(HTTPError) as x:urlopen(req)
   self.assertEqual(x.exception.code,503)
+  x.exception.close()

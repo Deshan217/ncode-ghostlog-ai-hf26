@@ -1,5 +1,5 @@
 import {chromium} from "playwright-core";
-import {mkdir,rename,writeFile} from "node:fs/promises";
+import {mkdir,rename,writeFile,readFile} from "node:fs/promises";
 import path from "node:path";
 await mkdir("evidence",{recursive:true});
 const browser=await chromium.launch({executablePath:"/usr/bin/google-chrome",headless:true,args:["--no-sandbox","--disable-dev-shm-usage"]});
@@ -7,14 +7,28 @@ let context;try{
  context=await browser.newContext({viewport:{width:1440,height:900},recordVideo:{dir:"evidence",size:{width:1280,height:800}}});
  const page=await context.newPage();await page.goto("http://127.0.0.1:8766/",{waitUntil:"networkidle"});
  await page.screenshot({path:"evidence/ghostlog-before.png",fullPage:true});
- await page.locator("#mood").selectOption("unsettling");await page.locator("#generate").click();
- await page.locator(".story h2").waitFor({timeout:180000});
+ await page.locator("#mood").selectOption("unsettling");
+ const responsePromise=page.waitForResponse(r=>r.url().endsWith("/api/haunt")&&r.request().method()==="POST",{timeout:330000});
+ await page.locator("#generate").click();
+ const response=await responsePromise;const result=await response.json();
+ const words=result.signal?.trim().split(/\s+/).length;
+ if(!response.ok()||result.model!=="gemma3:1b"||result.inference?.done!==true||!(words>=110&&words<=190))throw Error("Browser did not receive a complete real Gemma story: "+JSON.stringify(result));
+ await page.locator(".story h2").waitFor({timeout:10000});
  const displayed=await page.locator("#result").innerText();
  if(!displayed.includes("ANOMALY TRACES")||!displayed.includes("DOWNLOAD FICTIONAL TRANSMISSION"))throw Error("Real result not rendered");
+ if(await page.locator(".signal").innerText()!==result.signal)throw Error("Rendered story does not match the API response");
+ await writeFile("evidence/browser-gemma-story.json",JSON.stringify({commit:process.env.GITHUB_SHA,input:JSON.parse(response.request().postData()),story_word_count:words,result},null,2));
  await page.screenshot({path:"evidence/ghostlog-real-gemma-output.png",fullPage:true});
  await writeFile("evidence/recording-proof.txt","Recorded "+new Date().toISOString()+"\nActual local Gemma via application UI, no mocked responses\n"+displayed);
+ const downloadPromise=page.waitForEvent("download");await page.getByRole("button",{name:"DOWNLOAD FICTIONAL TRANSMISSION",exact:false}).click();
+ const download=await downloadPromise;await download.saveAs("evidence/ghostlog-story.md");
+ const markdown=await readFile("evidence/ghostlog-story.md","utf8");
+ if(!markdown.includes(result.signal)||!markdown.includes(result.title))throw Error("Markdown download does not match the generated story");
+ await page.setViewportSize({width:390,height:844});
+ if(await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth))throw Error("Mobile layout overflows horizontally");
+ await page.screenshot({path:"evidence/ghostlog-mobile.png",fullPage:true});
  await page.waitForTimeout(1200);
  const video=page.video();await context.close();context=null;
  if(video)await rename(await video.path(),path.resolve("evidence/ghostlog-real-ai-demo.webm"));
- console.log("VERIFIED REAL BROWSER DEMO screenshot and .webm");
+ console.log("VERIFIED REAL BROWSER DEMO screenshot, .webm, Markdown export, mobile layout; story_words="+words);
 }catch(e){console.error("Real demo failed",e);process.exitCode=1;if(context)await context.close()}finally{await browser.close()}
