@@ -80,4 +80,4 @@ MIT License © 2026 N-CODE STUDIO.
 
 The supplied project ZIP was retained unchanged. Every original file path was present in the existing repository at commit 4512b5a; existing GitHub edits were used as the baseline. The archive SHA-256 and the original file hashes are in [docs/original-zip-manifest.json](docs/original-zip-manifest.json).
 
-See [docs/VERIFICATION.md](docs/VERIFICATION.md) for the verified commit, actual inference output, screenshots, video, and limitations. The DEV article remains a draft until explicitly published.
+See [docs/VERIFICATION.md](docs/VERIFICATION.md) for the verified commit, actual inference output, screenshots, video, and limitations. The [Week 4 submission article is published](https://dev.to/deshan_nethmina_0789e81a2/n-code-ghostlog-ai-turning-forgotten-logs-into-halloween-stories-with-gemma-141f); see [SUBMISSION.md](SUBMISSION.md) for its confirmed status.

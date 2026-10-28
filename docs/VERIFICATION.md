@@ -57,4 +57,4 @@ Run deterministic checks with `python -m unittest discover -s tests -v`. With Ol
 - No user study, hardware comparison, broad reliability benchmark, or network-disconnected installation test was performed.
 - No shell execution occurs. The app does not store input history, but users should still provide only fictional/redacted logs.
 - The original ZIP remains unchanged; [manifest](original-zip-manifest.json) records its hash and file inventory. Existing GitHub edits were retained as the baseline.
-- The DEV article is prepared as a draft. Publishing it is a separate action and is required to enter the challenge.
+- The [DEV submission article is published](https://dev.to/deshan_nethmina_0789e81a2/n-code-ghostlog-ai-turning-forgotten-logs-into-halloween-stories-with-gemma-141f) with the required tags and the Best Use of Gemma category. Organizer review, badges, and prize decisions remain separate; see [submission status](../SUBMISSION.md).

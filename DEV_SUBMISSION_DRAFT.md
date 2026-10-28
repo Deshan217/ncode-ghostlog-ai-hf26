@@ -16,13 +16,13 @@ These are creative prompts. GhostLog does not execute commands, scan a computer,
 
 ## Demo
 
-![GhostLog displaying an actual Gemma-generated story](https://raw.githubusercontent.com/Deshan217/ncode-ghostlog-ai-hf26/main/docs/demo/ghostlog-real-gemma-output.png)
+![GhostLog displaying an actual Gemma-generated story](https://raw.githubusercontent.com/Deshan217/ncode-ghostlog-ai-hf26/75e92fc995cd924614391aa1981b234ac43a898a/docs/demo/ghostlog-real-gemma-output.png)
 
-[Watch or download the recorded browser walkthrough](https://github.com/Deshan217/ncode-ghostlog-ai-hf26/blob/main/docs/demo/ghostlog-real-ai-demo.webm).
+[Open the recorded browser walkthrough](https://github.com/Deshan217/ncode-ghostlog-ai-hf26/blob/75e92fc995cd924614391aa1981b234ac43a898a/docs/demo/ghostlog-real-ai-demo.webm) · [Direct video download](https://raw.githubusercontent.com/Deshan217/ncode-ghostlog-ai-hf26/75e92fc995cd924614391aa1981b234ac43a898a/docs/demo/ghostlog-real-ai-demo.webm).
 
-The recording shows the real application calling local Gemma. It also checks the Markdown export and captures the mobile layout.
+The recording shows the real application calling local Gemma. The same browser test verifies the Markdown export and captures the mobile layout.
 
-[Verified GitHub Actions run](https://github.com/Deshan217/ncode-ghostlog-ai-hf26/actions/runs/40669822794) · [Evidence and reproduction notes](https://github.com/Deshan217/ncode-ghostlog-ai-hf26/blob/main/docs/VERIFICATION.md)
+[Verified GitHub Actions run](https://github.com/Deshan217/ncode-ghostlog-ai-hf26/actions/runs/40669822794) · [Evidence and reproduction notes](https://github.com/Deshan217/ncode-ghostlog-ai-hf26/blob/75e92fc995cd924614391aa1981b234ac43a898a/docs/VERIFICATION.md)
 
 This is a local application, rather than a publicly hosted AI service. Judges can reproduce it with Python 3.10+ and Ollama:
 
